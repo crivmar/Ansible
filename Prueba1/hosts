@@ -1,0 +1,2 @@
+[servidores]
+nodo1 ansible_ssh_host=172.22.8.133
