@@ -2,7 +2,7 @@
   become: true
   tasks:
     - name: "Crear un usuario"
-      ansible.bultin.user:
+      user:
         name: crivero
         uid: 1040
         password: $y$j9T$v7684zooXapXyGn5l7DlB0$r1MybknVxJpYDd7qJyCyKy9zmL53E1GToeL36X/luNC
@@ -10,12 +10,12 @@
     - name: "Descarga fichero desde una url"
       get_url:
         url: https://wordpress.org/latest.zip
-        dest: /home/ansible/
+        dest: /home/crivero/latest.zip
     
     - name: "Descomprimir fichero"
-      win_unzip:
-        src: /home/ansible/latest.zip
-        dest: /home/ansible/Prueba
-        creates: /home/ansible/Prueba
+      unarchive:
+        src: /home/crivero/latest.zip
+        dest: /home/crivero/Prueba
+        creates: /home/crivero/Prueba
     
   
