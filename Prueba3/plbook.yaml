@@ -12,10 +12,14 @@
         url: https://wordpress.org/latest.zip
         dest: /home/crivero/latest.zip
     
+    - name: "Instalar paquete"
+      apt:
+        name: unzip
+
     - name: "Descomprimir fichero"
       unarchive:
         src: /home/crivero/latest.zip
         dest: /home/crivero/Prueba
-        creates: /home/crivero/Prueba
+
     
   
