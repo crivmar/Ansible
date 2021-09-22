@@ -1,0 +1,13 @@
+- hosts: servidores
+  become: true
+  tasks:
+    - name: "Crear un usuario"
+      ansible.bultin.user:
+        name: crivero
+        uid: 1040
+        password: $y$j9T$v7684zooXapXyGn5l7DlB0$r1MybknVxJpYDd7qJyCyKy9zmL53E1GToeL36X/luNC
+    
+    - name: "Descarga fichero desde una url"
+      get_url:
+        url: https://wordpress.org/latest.zip
+        dest: /home/ansible/
