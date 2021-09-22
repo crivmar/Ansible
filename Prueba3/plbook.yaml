@@ -19,7 +19,8 @@
     - name: "Descomprimir fichero"
       unarchive:
         src: /home/crivero/latest.zip
+        #create: /home/crivero/Prueba
         dest: /home/crivero/Prueba
-
+        remote_src: True
     
   
