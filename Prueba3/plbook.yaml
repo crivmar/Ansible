@@ -12,16 +12,20 @@
         url: https://wordpress.org/latest.zip
         dest: /home/crivero/latest.zip
     
-    - name: "Instalar paquete"
+    - name: "Actualizar los repositorios"
       apt:
-        name: unzip
-        name: mariadb-server
+        update_cache: yes
+        upgrade: yes
+
+    - name: "Instalar paquetes"
+      apt:
+        pkg:
+          - unzip
+          - mariadb-server
+          - python3-mysqldb
 
     - name: "Descomprimir fichero"
       unarchive:
         src: /home/crivero/latest.zip
-        #create: /home/crivero/Prueba
         dest: /home/crivero/Prueba
         remote_src: True
-    
-  
