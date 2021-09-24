@@ -29,3 +29,8 @@
         src: /home/crivero/latest.zip
         dest: /home/crivero/Prueba
         remote_src: True
+
+    - name: "Crear base de datos"
+      mysql_db:
+        name: crivero_wordpress
+        state: present
