@@ -34,3 +34,10 @@
       mysql_db:
         name: crivero_wordpress
         state: present
+    
+    - name: "Crear usuario en la data base con privilegios en la misma"
+      mysql_user:
+        name: crivero
+        password: prueba
+        priv: '*.*:ALL,GRANT'
+        state: present
