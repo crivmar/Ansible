@@ -46,5 +46,5 @@
     - name: "Clonar un repositorio"
       git:
         repo: https://github.com/josedom24/ansible_ejemplos.git
-        dest: /home/crivero/
+        dest: /home/crivero/Github
         clone: yes
