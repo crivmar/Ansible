@@ -23,6 +23,7 @@
           - unzip
           - mariadb-server
           - python3-mysqldb
+          - git
 
     - name: "Descomprimir fichero"
       unarchive:
@@ -41,3 +42,9 @@
         password: prueba
         priv: '*.*:ALL,GRANT'
         state: present
+    
+    - name: "Clonar un repositorio"
+      git:
+        repo: https://github.com/josedom24/ansible_ejemplos.git
+        dest: /home/crivero/
+        clone: yes
