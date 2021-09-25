@@ -1,0 +1,50 @@
+- hosts: servidores
+  become: true
+  tasks:
+    - name: "Crear un usuario"
+      user:
+        name: crivero
+        uid: 1040
+        password: $y$j9T$v7684zooXapXyGn5l7DlB0$r1MybknVxJpYDd7qJyCyKy9zmL53E1GToeL36X/luNC
+    
+    - name: "Descarga fichero desde una url"
+      get_url:
+        url: https://wordpress.org/latest.zip
+        dest: /home/crivero/latest.zip
+    
+    - name: "Actualizar los repositorios"
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: "Instalar paquetes"
+      apt:
+        pkg:
+          - unzip
+          - mariadb-server
+          - python3-mysqldb
+          - git
+
+    - name: "Descomprimir fichero"
+      unarchive:
+        src: /home/crivero/latest.zip
+        dest: /home/crivero/Prueba
+        remote_src: True
+
+    - name: "Crear base de datos"
+      mysql_db:
+        name: crivero_wordpress
+        state: present
+    
+    - name: "Crear usuario en la data base con privilegios en la misma"
+      mysql_user:
+        name: crivero
+        password: prueba
+        priv: '*.*:ALL,GRANT'
+        state: present
+    
+    - name: "Clonar un repositorio"
+      git:
+        repo: https://github.com/josedom24/ansible_ejemplos.git
+        dest: /home/crivero/Github
+        clone: yes
