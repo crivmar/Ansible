@@ -15,7 +15,7 @@
     - name: "Actualizar los repositorios"
       apt:
         update_cache: yes
-        upgrade: yes
+        upgrade: "yes"
 
     - name: "Instalar paquetes"
       apt:
